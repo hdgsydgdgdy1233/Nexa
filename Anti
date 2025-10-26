@@ -1,0 +1,130 @@
+-- AntiDebugKickClient.lua
+-- Letakkan sebagai LocalScript di StarterPlayerScripts
+
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local player = Players.LocalPlayer
+local remoteName = "AntiDebugKick"
+local remote = ReplicatedStorage:FindFirstChild(remoteName)
+
+-- jika RemoteEvent belum ada, buat fallback lokal (tidak mengirim ke server)
+if not remote then
+    warn(("AntiDebugKick: RemoteEvent '%s' tidak ditemukan di ReplicatedStorage. Buat RemoteEvent bernama ini untuk logging server-side."):format(remoteName))
+end
+
+local function safePcall(f, ...)
+    local ok, ret = pcall(f, ...)
+    return ok, ret
+end
+
+local function detectIndicators()
+    local indicators = {}
+
+    -- coba identifyexecutor (banyak executor punya)
+    local ok, exe = safePcall(function() return (identifyexecutor and identifyexecutor()) end)
+    if ok and exe and exe ~= "" then
+        table.insert(indicators, ("identifyexecutor: %s"):format(tostring(exe)))
+    end
+
+    -- daftar global umum executor
+    local knownGlobals = {
+        "syn", "secure_load", "KRNL_LOADED", "protosmasher", "fluxus", "is_sirhurt_closure",
+        "pebc_execute", "get_executor", "ExploitHook", "inspect"
+    }
+    for _, name in ipairs(knownGlobals) do
+        local found = false
+        -- cek _G
+        local okG, val = pcall(function() return _G[name] end)
+        if okG and val ~= nil then found = true end
+        -- cek global environment via rawget(getfenv()) fallback
+        if not found then
+            local okEnv, env = pcall(function() return (getfenv and getfenv()) end)
+            if okEnv and env and env[name] ~= nil then found = true end
+        end
+        if found then
+            table.insert(indicators, ("global: %s"):format(name))
+        end
+    end
+
+    -- fungsi eksploit umum
+    local funcs = {"getrawmetatable","hookfunction","hookmetamethod","newcclosure","setreadonly","getgc","getgenv","getrenv"}
+    for _, fn in ipairs(funcs) do
+        local okFn, val = pcall(function() return rawget(_G, fn) or _G[fn] end)
+        if okFn and type(val) == "function" then
+            table.insert(indicators, ("function: %s"):format(fn))
+        end
+    end
+
+    -- debug library availability
+    local okDebug, _ = pcall(function() return debug and debug.getmetatable end)
+    if okDebug and debug and type(debug.getmetatable) == "function" then
+        table.insert(indicators, "debug.getmetatable available")
+    end
+
+    -- coba traceback untuk lihat stack (jika tersedia)
+    local okTrace, trace = pcall(function() return (debug and debug.traceback and debug.traceback()) end)
+    if okTrace and trace and trace ~= "" then
+        table.insert(indicators, "traceback_available")
+    end
+
+    return indicators
+end
+
+local function buildPayload(indicators)
+    return {
+        PlayerName = player and player.Name or "Unknown",
+        UserId = player and player.UserId or -1,
+        Indicators = indicators,
+        Summary = table.concat(indicators, ", "),
+        Timestamp = os.time()
+    }
+end
+
+local function onDetected(indicators)
+    -- segera kick client-side agar langsung keluar
+    local reason = "Detected debug/executor usage. Anda telah dikeluarkan."
+    -- kirim payload ke server (jika ada RemoteEvent) sebelum kick (panggil pcall agar tidak error)
+    local payload = buildPayload(indicators)
+    if remote then
+        pcall(function()
+            remote:FireServer(payload)
+        end)
+    end
+
+    -- Kick client-side: ini memberi reaksi instan pada client
+    pcall(function()
+        if player then
+            player:Kick(reason)
+        end
+    end)
+end
+
+-- Jalankan deteksi langsung (saat script berjalan)
+local inds = detectIndicators()
+if #inds > 0 then
+    onDetected(inds)
+else
+    -- Opsional: jalankan pemeriksaan ulang cepat (mis. beberapa detik) untuk menangkap executor yang muncul belakangan
+    spawn(function()
+        wait(3)
+        local inds2 = detectIndicators()
+        if #inds2 > 0 then
+            onDetected(inds2)
+        end
+    end)
+end
+
+-- Jika Anda ingin, setelah deteksi clear: jangan lanjutkan loadstring Anda di client yang terdeteksi.
+-- Contoh cara aman menjalankan loadstring Anda hanya jika tidak terdeteksi:
+-- (letakkan di bawah ini dan ganti URL sesuai)
+--[[
+if #inds == 0 then
+    local ok, res = pcall(function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/vinxonez/ViKai-HUB/refs/heads/main/fishit"))()
+    end)
+    if not ok then
+        warn("Failed to load remote script:", res)
+    end
+end
+]]
