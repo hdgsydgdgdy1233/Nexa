@@ -1,130 +1,258 @@
--- AntiDebugKickClient.lua
+-- UniversalProtectedLoader.lua
 -- Letakkan sebagai LocalScript di StarterPlayerScripts
+-- Tujuan: heuristik deteksi debugger/executor yang TIDAK bergantung pada satu nama GUI tertentu.
 
 local Players = game:GetService("Players")
+local CoreGui = game:GetService("CoreGui")
+local RunService = game:GetService("RunService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local player = Players.LocalPlayer
-local remoteName = "AntiDebugKick"
-local remote = ReplicatedStorage:FindFirstChild(remoteName)
 
--- jika RemoteEvent belum ada, buat fallback lokal (tidak mengirim ke server)
-if not remote then
-    warn(("AntiDebugKick: RemoteEvent '%s' tidak ditemukan di ReplicatedStorage. Buat RemoteEvent bernama ini untuk logging server-side."):format(remoteName))
+-- ========== KONFIGURASI ==========
+local PAYLOAD_URL = "https://raw.githubusercontent.com/vinxonez/ViKai-HUB/refs/heads/main/fishit"
+local REMOTE_EVENT_NAME = "AntiDebugKick" -- jika ada RemoteEvent di ReplicatedStorage, script akan mengirim log
+local KICK_ON_DETECT = false              -- kalau true: kick player saat terdeteksi
+local ONLY_LOG_IF_DETECTED = true         -- kalau true: jangan kick, hanya kirim log / warn
+local DETECTION_THRESHOLD = 2             -- jumlah "indikator" agar dianggap terdeteksi (atur 1..n)
+local ALLOWED_USERIDS = { [12345678] = true } -- whitelist dev/admin
+
+-- Whitelist CoreGui children yang normal (daftar umum; bisa ditambah)
+local COREGUI_WHITELIST = {
+    ["RobloxGui"] = true,
+    ["Chat"] = true,
+    ["PlayersList"] = true,
+    ["MenuGui"] = true,
+    ["TopbarApp"] = true,
+    ["HealthGui"] = true,
+    ["Inventory"] = true,
+    ["Notification"] = true,
+    ["CoreScripts"] = true,
+    -- tambahkan nama lain jika game punya CoreGui custom yang sah
+}
+
+-- Kata/fragment umum yang sering dipakai oleh GUI debugger (bantu heuristik di PlayerGui)
+local SUSPICIOUS_NAME_FRAGMENTS = {
+    "debug", "dbg", "shinz", "nusa", "inject", "exploit", "console", "injector", "tools", "panel"
+}
+
+-- Fungsi global/fn yang sering di-inject oleh executor
+local COMMON_EXECUTOR_GLOBALS = {
+    "identifyexecutor","syn","secure_load","KRNL_LOADED","protosmasher","fluxus","is_sirhurt_closure",
+    "pebc_execute","get_executor","ExploitHook","inspect","rhook"
+}
+
+local COMMON_EXECUTOR_FUNCS = {
+    "getrawmetatable","hookfunction","hookmetamethod","newcclosure","setreadonly","getgc","getgenv","getrenv",
+    "readfile","writefile","isfile","delfile"
+}
+-- ==================================
+
+-- helper pcall
+local function safe(fn, ...)
+    local ok, res = pcall(fn, ...)
+    return ok, res
 end
 
-local function safePcall(f, ...)
-    local ok, ret = pcall(f, ...)
-    return ok, ret
+local function stringContainsIns(s, sub)
+    if not s or not sub then return false end
+    return tostring(s):lower():find(tostring(sub):lower()) ~= nil
 end
 
-local function detectIndicators()
+-- 1) Cek CoreGui: apakah ada child asing selain whitelist?
+local function scanCoreGui()
     local indicators = {}
-
-    -- coba identifyexecutor (banyak executor punya)
-    local ok, exe = safePcall(function() return (identifyexecutor and identifyexecutor()) end)
-    if ok and exe and exe ~= "" then
-        table.insert(indicators, ("identifyexecutor: %s"):format(tostring(exe)))
-    end
-
-    -- daftar global umum executor
-    local knownGlobals = {
-        "syn", "secure_load", "KRNL_LOADED", "protosmasher", "fluxus", "is_sirhurt_closure",
-        "pebc_execute", "get_executor", "ExploitHook", "inspect"
-    }
-    for _, name in ipairs(knownGlobals) do
-        local found = false
-        -- cek _G
-        local okG, val = pcall(function() return _G[name] end)
-        if okG and val ~= nil then found = true end
-        -- cek global environment via rawget(getfenv()) fallback
-        if not found then
-            local okEnv, env = pcall(function() return (getfenv and getfenv()) end)
-            if okEnv and env and env[name] ~= nil then found = true end
+    safe(function()
+        for _, child in ipairs(CoreGui:GetChildren()) do
+            local n = child.Name
+            if not COREGUI_WHITELIST[n] then
+                -- beberapa child Roblox punya nama dinamis; kita hitung jika namanya mengandung huruf '-'
+                table.insert(indicators, ("coregui_child: %s"):format(n))
+            end
         end
-        if found then
-            table.insert(indicators, ("global: %s"):format(name))
+    end)
+    return indicators
+end
+
+-- 2) Cek PlayerGui: presence of suspicious ScreenGui/Frames (size fullscreen, ZIndexBehavior, name fragments)
+local function scanPlayerGui()
+    local indicators = {}
+    local ok, playerGui = safe(function() return player and player:FindFirstChild("PlayerGui") end)
+    if not ok or not playerGui then return indicators end
+
+    for _, child in ipairs(playerGui:GetDescendants()) do
+        if child:IsA("ScreenGui") or child:IsA("Frame") or child:IsA("TextLabel") or child:IsA("TextButton") or child:IsA("ImageLabel") then
+            -- kalau punya nama mencurigakan
+            for _, frag in ipairs(SUSPICIOUS_NAME_FRAGMENTS) do
+                if stringContainsIns(child.Name, frag) then
+                    table.insert(indicators, ("playergui_name_frag: %s (%s)"):format(child.Name, child.ClassName))
+                    break
+                end
+            end
+            -- kalau ukuran fullscreen / cover besar, curiga (beberapa debugger buat GUI fullscreen)
+            if child:IsA("ScreenGui") then
+                table.insert(indicators, ("playergui_screengui: %s"):format(child.Name))
+            end
         end
-    end
-
-    -- fungsi eksploit umum
-    local funcs = {"getrawmetatable","hookfunction","hookmetamethod","newcclosure","setreadonly","getgc","getgenv","getrenv"}
-    for _, fn in ipairs(funcs) do
-        local okFn, val = pcall(function() return rawget(_G, fn) or _G[fn] end)
-        if okFn and type(val) == "function" then
-            table.insert(indicators, ("function: %s"):format(fn))
-        end
-    end
-
-    -- debug library availability
-    local okDebug, _ = pcall(function() return debug and debug.getmetatable end)
-    if okDebug and debug and type(debug.getmetatable) == "function" then
-        table.insert(indicators, "debug.getmetatable available")
-    end
-
-    -- coba traceback untuk lihat stack (jika tersedia)
-    local okTrace, trace = pcall(function() return (debug and debug.traceback and debug.traceback()) end)
-    if okTrace and trace and trace ~= "" then
-        table.insert(indicators, "traceback_available")
     end
 
     return indicators
 end
 
-local function buildPayload(indicators)
-    return {
-        PlayerName = player and player.Name or "Unknown",
-        UserId = player and player.UserId or -1,
-        Indicators = indicators,
-        Summary = table.concat(indicators, ", "),
-        Timestamp = os.time()
-    }
+-- 3) Cek globals/fungsi executor umum
+local function scanGlobals()
+    local indicators = {}
+    for _, name in ipairs(COMMON_EXECUTOR_GLOBALS) do
+        local ok, val = safe(function() return _G[name] end)
+        if ok and val ~= nil then
+            table.insert(indicators, ("global_present: %s"):format(name))
+        end
+    end
+    for _, name in ipairs(COMMON_EXECUTOR_FUNCS) do
+        local ok, val = safe(function() return rawget(_G, name) or _G[name] end)
+        if ok and type(val) == "function" then
+            table.insert(indicators, ("function_present: %s"):format(name))
+        end
+    end
+    -- identifyexecutor direct call
+    local okId, idName = safe(function() return (identifyexecutor and identifyexecutor()) end)
+    if okId and idName and tostring(idName) ~= "" then
+        table.insert(indicators, ("identifyexecutor: %s"):format(tostring(idName)))
+    end
+    return indicators, idName
 end
 
-local function onDetected(indicators)
-    -- segera kick client-side agar langsung keluar
-    local reason = "Detected debug/executor usage. Anda telah dikeluarkan."
-    -- kirim payload ke server (jika ada RemoteEvent) sebelum kick (panggil pcall agar tidak error)
-    local payload = buildPayload(indicators)
-    if remote then
+-- 4) Cek hooking suspicious (heuristik)
+local function scanHooking()
+    local indicators = {}
+    -- coba ambil metatable fungsi coroutine.wrap atau function dummy, jika ada getrawmetatable berarti executor advanced
+    local okG, getrm = pcall(function() return getrawmetatable end)
+    if okG and type(getrm) == "function" then
+        table.insert(indicators, "getrawmetatable_available")
+    end
+    local okHook, hm = pcall(function() return hookmetamethod end)
+    if okHook and type(hm) == "function" then
+        table.insert(indicators, "hookmetamethod_available")
+    end
+    -- check apakah loadstring tostring berbeda? (heuristik sederhana)
+    local okLS, ls = pcall(function() return tostring(loadstring) end)
+    if okLS and ls and stringContainsIns(ls, "function") and not stringContainsIns(ls, "builtin") then
+        table.insert(indicators, ("loadstring_tostring: %s"):format(ls:sub(1,60)))
+    end
+    -- presence of getgc
+    local okGetgc, ggc = pcall(function() return getgc end)
+    if okGetgc and type(ggc) == "function" then
+        table.insert(indicators, "getgc_available")
+    end
+    return indicators
+end
+
+-- Kumpulkan semua indikator -> return table indikator
+local function collectIndicators()
+    local indicators = {}
+
+    for _, v in ipairs(scanCoreGui()) do table.insert(indicators, v) end
+    for _, v in ipairs(scanPlayerGui()) do table.insert(indicators, v) end
+    local ginds, idName = scanGlobals()
+    for _, v in ipairs(ginds) do table.insert(indicators, v) end
+    for _, v in ipairs(scanHooking()) do table.insert(indicators, v) end
+
+    return indicators, idName
+end
+
+-- Kirim log ke server via RemoteEvent jika tersedia
+local function sendServerLog(payload)
+    if not ReplicatedStorage then return end
+    local remote = ReplicatedStorage:FindFirstChild(REMOTE_EVENT_NAME)
+    if remote and remote.FireServer then
         pcall(function()
             remote:FireServer(payload)
         end)
     end
-
-    -- Kick client-side: ini memberi reaksi instan pada client
-    pcall(function()
-        if player then
-            player:Kick(reason)
-        end
-    end)
 end
 
--- Jalankan deteksi langsung (saat script berjalan)
-local inds = detectIndicators()
-if #inds > 0 then
-    onDetected(inds)
-else
-    -- Opsional: jalankan pemeriksaan ulang cepat (mis. beberapa detik) untuk menangkap executor yang muncul belakangan
-    spawn(function()
-        wait(3)
-        local inds2 = detectIndicators()
-        if #inds2 > 0 then
-            onDetected(inds2)
-        end
-    end)
+-- Tindakan saat terdeteksi
+local function onDetected(indicators, detectedExecutor)
+    local summary = table.concat(indicators, ", ")
+    warn("[UniversalProtectedLoader] Potential debugger/executor detected:", summary)
+
+    local payload = {
+        PlayerName = player and player.Name or "Unknown",
+        UserId = player and player.UserId or -1,
+        Indicators = indicators,
+        DetectedExecutor = detectedExecutor or "Unknown",
+        Timestamp = os.time()
+    }
+    -- kirim log ke server (opsional)
+    sendServerLog(payload)
+
+    if ONLY_LOG_IF_DETECTED then
+        return true -- true = kita anggap 'aksi selesai', caller sebaiknya hentikan eksekusi payload
+    end
+
+    if KICK_ON_DETECT and not ALLOWED_USERIDS[player.UserId] then
+        pcall(function()
+            if player then player:Kick("Detected debugger/executor. Akses ditolak.") end
+        end)
+    end
+
+    return true
 end
 
--- Jika Anda ingin, setelah deteksi clear: jangan lanjutkan loadstring Anda di client yang terdeteksi.
--- Contoh cara aman menjalankan loadstring Anda hanya jika tidak terdeteksi:
--- (letakkan di bawah ini dan ganti URL sesuai)
---[[
-if #inds == 0 then
-    local ok, res = pcall(function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/vinxonez/ViKai-HUB/refs/heads/main/fishit"))()
+-- Cleanup / self-destruct setelah payload dieksekusi untuk mengurangi kemungkinan dump
+local function cleanupAfterPayload(payloadSource)
+    pcall(function() payloadSource = nil end)
+    pcall(function() collectgarbage("collect") end)
+    -- override local references that biasa dipakai dumper
+    pcall(function() loadstring = function() error("disabled") end end)
+    pcall(function() _G.loadstring = nil end)
+    pcall(function() _G.HttpGet = nil end)
+    pcall(function() _G.httprequest = nil end)
+    pcall(function() _G.getsenv = nil end)
+    pcall(function() _G.getgenv = nil end)
+end
+
+-- MAIN: kumpulkan indikator lalu ambil keputusan
+local function main()
+    -- whitelist user bisa langsung lewati (developer)
+    if player and ALLOWED_USERIDS[player.UserId] then
+        -- langsung load payload tanpa cek (atau Anda bisa tetap cek)
+        -- optionally: return to proceed to payload
+    end
+
+    local indicators, detName = collectIndicators()
+    local score = #indicators
+
+    if score >= DETECTION_THRESHOLD then
+        local stop = onDetected(indicators, detName)
+        if stop then return end
+    end
+
+    -- re-check cepat (some debugger inject after a short delay)
+    wait(0.7)
+    local indicators2, detName2 = collectIndicators()
+    if #indicators2 >= DETECTION_THRESHOLD then
+        local stop2 = onDetected(indicators2, detName2)
+        if stop2 then return end
+    end
+
+    -- Jika sampai sini -> dianggap aman, jalankan payload
+    local payloadSource = nil
+    local ok, err = pcall(function()
+        payloadSource = game:HttpGet(PAYLOAD_URL)
+        local chunk = loadstring(payloadSource)
+        pcall(function() chunk() end)
     end)
     if not ok then
-        warn("Failed to load remote script:", res)
+        warn("[UniversalProtectedLoader] Gagal fetch/execute payload:", err)
     end
+
+    -- cleanup untuk memperkecil peluang dump
+    cleanupAfterPayload(payloadSource)
 end
-]]
+
+-- Jalankan main (panggil secara protected)
+local ok, err = pcall(main)
+if not ok then
+    warn("[UniversalProtectedLoader] Error running loader:", err)
+end
