@@ -1,5 +1,1 @@
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-
--- Kick langsung dengan alasan
-player:Kick("Gunain Loader Script Terbaru dan Gui Key System Sudah yg baru. Moderator: Han !")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/PremiumVersion/csvegrgrrgr/refs/heads/main/vebvedvbdbv%20edvedgvedgvedfv"))()
