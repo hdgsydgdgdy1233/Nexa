@@ -1,1 +1,155 @@
 --[[ v1.0.0 https://wearedevs.net/obfuscator ]] return(function(...)local d={"\081\056\112\054\069\067\120\101\105\098\061\061","\081\056\112\082\118\115\061\061";"\118\088\083\083\057\068\061\061","\057\088\066\107\069\078\066\107\118\081\120\083\118\067\116\101";"\073\067\116\100\069\077\065\061","\048\077\101\110\048\122\120\120\113\111\110\047\043\107\083\056\074\078\054\118";"\073\088\087\053\073\113\061\061","\074\078\049\115\118\078\103\075","\069\051\109\061","\050\119\068\101\073\055\084\054\050\068\061\061";"\113\117\120\043\104\122\074\107\105\117\074\047\120\080\054\099\102\068\061\061";"\102\088\083\082";"\099\117\087\119\078\087\066\097\048\067\103\118\104\109\110\053\043\098\061\061";"\104\088\066\076\069\081\121\101\043\081\073\047\113\078\110\119","\074\080\112\085\074\078\056\119\073\081\065\061";"\118\082\101\107\073\113\061\061","\048\122\101\049\103\111\087\054\074\080\110\122\057\088\120\071";"\069\078\087\107\043\098\061\061";"\069\078\116\043\043\077\083\053\074\088\118\107\099\109\074\051\113\081\057\061","","\074\080\087\119\069\080\104\061";"\069\080\112\083\073\122\103\107\057\067\101\085\073\115\061\061";"\099\088\053\083\102\051\121\084\113\111\073\085\074\051\083\082\043\115\061\061","\057\067\087\085\073\080\112\053";"\118\088\112\085\118\088\087\107";"\050\068\061\061","\120\117\066\077\048\076\113\088\099\117\087\113\078\051\110\118";"\057\067\066\053\069\077\073\101","\069\051\065\061","\081\056\112\053\073\081\120\083\074\080\087\119\069\080\104\061","\073\077\103\056\118\068\061\061";"\105\069\055\072\054\066\049\078\100\051\120\069\043\103\047\055\082\114\103\085\055\068\122\103\082\089\056\085\085\115\043\070\066\105\116\079\113\056\084\055\098\113\072\098\102\069\088\057\081\120\066\076\097\075\057\109\098\118\088\070\110\089\110\069\109\077\065\078\109\069\072\049\052\101\108\053\068\122\054\114\083\107\072\086\113\047\112\056\087\080\118\074\078\117\051\053\100\069\105\072\053\089\056\102\110\109\121\104\099\053\056\101\075\054\121\120\085\070\086\115\108\048\052\053\118\118\052\106\104\068\069\097\097\052\103\043\056\082\118\071\084\113\061\061";"\073\088\056\083\074\080\103\084";"\043\104\049\080\099\078\118\077\104\087\120\086\050\066\066\104\099\068\061\061","\073\056\099\056\078\104\087\120\057\104\104\077\057\122\120\101\105\068\061\061";"\066\080\087\053\057\080\066\114\065\109\120\101\074\080\066\111\074\080\066\117\065\113\061\061","\074\080\112\076\074\122\110\054\069\067\057\061";"\069\080\066\085";"\081\056\112\071\073\078\090\061","\057\080\103\083\069\080\115\061","\120\066\121\118\057\080\120\116\099\082\074\047\078\111\120\048";"\073\081\110\114\069\077\065\061";"\105\117\056\047\050\102\120\056\066\117\103\055\057\101\109\056","\057\077\120\114\043\078\049\082","\105\104\084\077\113\113\061\061","\066\104\056\072\074\122\117\077\057\080\054\077\102\113\061\061","\048\122\120\107\057\109\074\101\074\098\061\061"}local function y(y)return d[y-(551195+-492492)]end for y,a in ipairs({{181262-181261;212062+-212015},{-870690+870691,-879959-(-879987)},{-517042+517071,-643728+643775}})do while a[-107562+107563]<a[224906+-224904]do d[a[-155481+155482]],d[a[9969+-9967]],a[872889+-872888],a[-2558-(-2560)]=d[a[-741988+741990]],d[a[-1033233-(-1033234)]],a[574877+-574876]+(-226419-(-226420)),a[714190-714188]-(392883-392882)end end do local y={N=-401620+401642;U=974886-974840,K=700836-700793;i=654895-654865,M=-1006644-(-1006699),D=422112+-422080,["\057"]=-409856+409884;W=59096-59091,E=-132195-(-132222),G=-786065+786109,o=-170780+170815,I=-523385-(-523410),q=-158229+158245,w=-935597-(-935631),r=-632159+632209,b=-375229+375229;["\055"]=-250981-(-250983),g=-675836+675849;e=-810869+810906,["\043"]=218004+-217978;["\053"]=101960+-101915;p=1034480-1034419,["\054"]=476928-476887;J=-706616+706645;["\051"]=305622+-305619,y=807460-807459;S=-1035126-(-1035159),V=-141701+141743;X=263270+-263216,C=450517-450479,["\052"]=305010+-304952;k=-385683-(-385735),["\048"]=897734-897716,["\049"]=310013+-309956,P=-783147+783153;A=518369+-518361;v=-436000-(-436024);L=-558178-(-558229),d=896970-896923;O=-332680+332740,T=-709907-(-709947);t=446831+-446782;m=626303-626299,l=103052-102990,c=645301-645289,s=643002+-642954;x=519578-519561,u=58087-58051;H=57863-57852,["\050"]=811304+-811290,R=-432170+432209,F=-83502+83561,["\047"]=263046-263036;Y=758600-758569;f=896131-896112;["\056"]=844678+-844625;B=-775470-(-775491);Z=-196121+196177;Q=708560+-708537;j=619498+-619435;a=811218+-811203,z=-147203-(-147210);n=-666346+666355,h=625745+-625725}local a=d local m=table.insert local t=table.concat local U=string.len local Q=math.floor local c=string.char local B=string.sub local x=type for d=-986433-(-986434),#a,-66339+66340 do local C=a[d]if x(C)=="\115\116\114\105\110\103"then local x=U(C)local F={}local Z=-957429+957430 local K=912710-912710 local G=314880+-314880 while Z<=x do local d=B(C,Z,Z)local a=y[d]if a then K=K+a*(568872+-568808)^((-586571-(-586574))-G)G=G+(1033579-1033578)if G==229599+-229595 then G=618393+-618393 local d=Q(K/(921795-856259))local y=Q((K%(-973485-(-1039021)))/(721893-721637))local a=K%(336842-336586)m(F,c(d,y,a))K=997348-997348 end elseif d=="\061"then m(F,c(Q(K/(177195-111659))))if Z>=x or B(C,Z+(-480600-(-480601)),Z+(-11340-(-11341)))~="\061"then m(F,c(Q((K%(-186225+251761))/(-1005249-(-1005505)))))end break end Z=Z+(86116+-86115)end a[d]=t(F)end end end return(function(d,m,t,U,Q,c,B,q,O,z,w,a,i,C,G,u,F,x,I,K,Z)a,q,K,u,w,z,I,C,G,Z,x,O,i,F=function(a,t,U,Q)local Z,s,j,L,k,B,S,R,J,g,H,N,M,E,b,K,f,l,D,w,G,T,Y,A,V,v,X,p,W,r,e,C,o,h while a do if a<10413139-395081 then if a<4948436-577842 then if a<1004485+1301732 then if a<-59113+1693489 then if a<897760-(-405000)then if a<-769941+1265064 then if a<-189994-(-337257)then K=K+w p=not e Z=K<=G Z=p and Z p=K>=G p=e and p Z=p or Z p=15167142-(-611911)a=Z and p Z=-815310+11452834 a=a or Z else K=-24737+24757 Z=x[U[-652772+652775]]a=8207887-(-961858)C=Z*K Z=569400-569143 B=C%Z x[U[-565786+565789]]=B end else Z=-492629+492630 a={}C=a K=x[U[-44845+44854]]G=K a=-281594+332690 K=-559160-(-559161)w=K K=411226+-411226 e=w<K K=Z-w end else if a<559186-(-915892)then C=y(-965317+1024057)B=y(-134527-(-193240))a=d[B]B=d[C]C=y(364643+-305903)d[C]=a C=y(-971084+1029797)d[C]=B a=4214008-(-170268)C=x[U[-522361+522362]]Z=C()else p=921499-921244 a={}x[U[115822-115820]]=a w=-516511+35184372605343 B=x[U[687302-687299]]G=B B=Z%w x[U[277930-277926]]=B a=225006+1987429 H=y(-961202-(-1019930))e=Z%p T=-913093-(-913094)p=660186+-660184 w=e+p x[U[-71188+71193]]=w p=d[H]H=y(316178+-257456)e=p[H]H=-237644+237645 p=e(C)e=y(-797992-(-856696))J=T K[Z]=e M=p e=-10605-(-10760)T=459954-459954 g=J<T T=H-J end end else if a<2629228-779697 then if a<521928+1261544 then L=y(1014210+-955489)b=y(-225894+284634)a=d[L]Y=d[b]L=a(Y)a=y(-1015687+1074400)d[a]=L a=-539552+16952948 else T=y(-347348-(-406087))M=d[T]B=M a=-679593+15070128 end else if a<2282658-108170 then D=f R=D l[D]=R D=nil a=-949135+9399665 else l=not g T=T+J H=T<=M H=l and H l=T>=M l=g and l H=l or H l=191235+3300932 a=H and l H=-219765+12939699 a=a or H end end end else if a<2987416-(-217427)then if a<-627698+3530190 then if a<1895050-(-859405)then if a<2296397-(-115278)then Z=x[U[753504-753501]]K=966677-966645 C=Z%K J=772372-772359 M=-639884-(-639886)G=x[U[-94801+94805]]p=x[U[-551697-(-551699)]]D=x[U[831826+-831823]]l=D-C D=420467+-420435 g=l/D T=J-g H=M^T e=p/H w=G(e)G=4294598734-(-368562)H=-736159+736160 K=w%G w=411374+-411372 G=w^C Z=K/G G=x[U[-762624+762628]]p=Z%H H=4295469773-502477 e=p*H a=361048+4015931 w=G(e)G=x[U[-747500-(-747504)]]e=G(Z)K=w+e p=-28198-(-93734)M=-1013534+1013790 w=-676829-(-742365)G=K%w e=K-G C=nil w=e/p p=27321+-27065 e=G%p J=-634377-(-634633)H=G-e p=H/M K=nil M=187328-187072 H=w%M G=nil T=w-H M=T/J T={e,p;H;M}Z=nil x[U[632240-632239]]=T e=nil H=nil M=nil w=nil p=nil else Z=t[704652-704650]a=x[U[834865+-834864]]K=a C=t[239505+-239504]a=K[Z]a=a and 745023+2142290 or 999235-(-588785)end else a=451429+10087693 end else if a<2728722-(-464559)then x[Z]=X a=x[Z]a=a and 2995892-(-208931)or-901001+14654417 else a=-643008+16500385 end end else if a<-169347+4039915 then if a<-711047+4156787 then f=-17044+17045 Y=#l D=G(f,Y)R=273363-273362 a=-459789+6109344 f=e(l,D)D=nil Y=x[g]V=f-R b=p(V)Y[f]=b f=nil else H=T L=y(-80920+139648)W=d[L]L=y(962518+-903771)X=W[L]W=X(C,H)X=x[U[352721+-352715]]L=X()f=W+L D=f+e f=-454988-(-455244)H=nil l=D%f e=l L=738750-738749 a=-491199+2703634 f=K[Z]W=e+L X=G[W]D=f..X K[Z]=D end else if a<4169407-54769 then j=a h=828696+-828695 S=N[h]h=false A=S==h a=A and 7187918-655692 or 10583662-169817 k=A else a=444974+11961186 C=nil x[U[52500-52495]]=B end end end end else if a<7125204-543360 then if a<95475+5304975 then if a<83120+4349250 then if a<-257351+4681810 then if a<753790+3627763 then a=d[y(217929+-159211)]K=y(799607+-740902)Z=d[K]K=y(986558+-927846)C=Z[K]K=x[U[-850612+850613]]Z={C(K)}B={m(Z)}else a=true a=a and-236010+1576164 or 7326440-738108 end else Y=y(985862-927149)a=d[Y]Y=y(-192573-(-251313))d[Y]=a a=755819+15657577 end else if a<4978276-(-9670)then W=x[Z]X=W a=W and-856849+16492232 or 3595572-441846 else K=x[U[-293136+293142]]a=4574364-317818 Z=K==C B=Z end end else if a<5514376-(-442486)then if a<-897273+6526938 then a=B and 9711804-(-851999)or 1019598+11386562 else f=#l Y=296346+-296346 D=f==Y a=D and 7981202-258893 or-599302+3830140 end else if a<-846806+7385829 then h=-297620-(-297622)S=N[h]h=x[v]A=S==h k=A a=237093+10176752 else Z=x[U[693131+-693129]]K=x[U[241455-241452]]C=Z==K B=C a=6331822-705545 end end end else if a<919217+7761295 then if a<181733+7459238 then if a<-705798+7885839 then if a<40005+6766521 then a=d[y(-20148-(-78873))]B={}else e=B g=y(-388952+447657)p=y(285889+-227140)B=d[p]p=y(-587215+645923)a=B[p]H=y(-662718+721423)p=F()x[p]=a B=d[H]H=y(-27604+86313)a=B[H]T=a J=d[g]H=a a=J and 14022826-(-771976)or-555324+14105098 M=J end else a=9401318-715847 end else if a<8687529-821102 then f=F()Y=q(12747717-(-122644),{f;M,T,w})N=y(-5776-(-64490))H=nil G=nil e=nil D={}A=nil x[f]=D o=y(618861-560129)b=F()p=nil D=F()x[D]=Y B={}Y={}V=y(711366+-652631)l=nil p=y(1087158-1028420)R={}w=i(w)x[b]=Y J=nil Y=d[V]v=x[b]r={[o]=v,[N]=A}V=Y(R,r)Y=u(1808275-(-635747),{b;f,g,M,T;D})w=y(-487345-(-546051))b=i(b)D=i(D)G=d[w]T=i(T)f=i(f)Z=Y J=-305794+11410741673795 g=i(g)e=d[p]K=V T=y(-42065+100781)M=i(M)M=Z(T,J)H=K[M]Z=nil K=nil M=y(773394+-714663)M=e[M]a=d[y(167504+-108785)]p={M(e,H)}w=G(m(p))G=w()else f=f+b R=not V D=f<=Y D=R and D R=f>=Y R=V and R D=R or D R=2908457-1004311 a=D and R D=286191+9546429 a=a or D end end else if a<8958515-(-241626)then if a<8488051-(-306685)then a=true a=a and 750742+14021299 or 664695+12778174 else K=184413-184412 Z=x[U[-360160-(-360163)]]C=Z~=K a=C and 1476276-(-895528)or-527833-(-922172)end else if a<-808913+10585518 then a=488+14595939 x[Z]=B else a=809216+2421622 f=#l Y=-391131-(-391131)D=f==Y end end end end end else if a<14171122-642209 then if a<918399+10819665 then if a<165864+10431390 then if a<278313+10136932 then if a<-135418+10453785 then if a<862889+9416340 then K=y(-744796+803524)Z=F()C=t a=true x[Z]=a B=d[K]K=y(765549-706832)a=B[K]K=F()x[K]=a G=F()a=I(11445214-(-1025371),{})x[G]=a a=false p=y(-534572+593296)w=F()x[w]=a e=d[p]H=q(-578717+12209844,{w})p=e(H)a=p and 630795+15828822 or-567635+7703249 B=p else B=-699056+15889258 Z=y(408172+-349435)K=11273215-(-673644)C=Z^K a=B-C B=y(976038+-917308)C=a a=B/C B={a}a=d[y(-830141-(-888886))]end else a=j a=9199186-(-15168)B=k end else if a<-884169+11423586 then a=d[y(548992+-490244)]B={Z}else G=y(-546526+605247)H=y(255830-197106)B=y(-226771-(-285517))a=d[B]C=x[U[-212558-(-212562)]]M=u(9648105-(-640991),{})K=d[G]p=d[H]H={p(M)}p=464075-464073 e={m(H)}w=e[p]G=K(w)K=y(-255728+314469)Z=C(G,K)C={Z()}B=a(m(C))Z=x[U[-215186+215191]]a=Z and 275117+4946421 or 3296519-(-960027)C=B B=Z end end else if a<-27827+11182446 then if a<952743+9697159 then a=x[U[-205583+205593]]Z=x[U[886797+-886786]]C[a]=Z a=x[U[-524357+524369]]Z={a(C)}B={m(Z)}a=d[y(-738890-(-797632))]else a=true a=a and 7019923-(-593801)or 14376632-(-482582)end else if a<10856965-(-690348)then a=-789024+5173300 else B={}a=true x[U[-19413-(-19414)]]=a a=d[y(507135+-448428)]end end end else if a<658609+12071211 then if a<12895837-397120 then if a<11995338-(-435713)then if a<11863242-(-310131)then B=-790327+2832554 Z=y(-551470+610213)K=2139090-832356 C=Z^K a=B-C C=a B=y(1096633-1037904)a=B/C B={a}a=d[y(-170918+229629)]else a=x[U[-131727-(-131734)]]a=a and 354208+14541042 or 1041570+168969 end else B=y(-652953-(-711679))a=d[B]C=y(-799664+858384)B=a(C)B={}a=d[y(312986+-254259)]end else if a<13576999-994972 then Z=x[U[-274365-(-274367)]]K=-876473+876682 C=Z*K Z=97210+22335809350885 B=C+Z C=35184371719079-(-369753)a=B%C x[U[658815+-658813]]=a Z=281601-281600 C=x[U[374729+-374726]]a=-65338-(-459677)B=C~=Z else a=10713377-174255 e=nil G=nil p=nil end end else if a<-819799+14206207 then if a<788357+12247839 then C=x[U[248650+-248649]]B=#C C=-679920-(-679920)a=B==C a=a and-243470+12747563 or 3672620-(-704359)else Z=x[U[-785067-(-785068)]]w=224739-224737 G=-896412-(-896413)K=Z(G,w)Z=-988296+988297 C=K==Z B=C a=C and 5031851-(-594426)or 194167+6380604 end else if a<546562+12891618 then k=x[Z]B=k a=k and 162722+3797407 or 8205473-(-1008881)else B={}a=d[y(-363970+422720)]end end end end else if a<-24699+14848823 then if a<13644135-(-883257)then if a<14145714-(-229542)then if a<13481698-(-633138)then if a<13781209-140490 then a=T B=M a=M and 242708+14147827 or 2476284-640950 else a=true a=-285082+15144296 end else b=not Y X=X+L B=X<=W B=b and B b=X>=W b=Y and b B=b or B b=138682+16504656 a=B and b B=-363706+4858875 a=a or B end else if a<13441403-(-1008941)then L=y(-449777+508498)D=u(-57801+11900351,{})M=F()T=670007-670004 J=-438419-(-438484)x[M]=B a=x[p]B=a(T,J)T=F()x[T]=B a=-304989+304989 l=y(34660+24064)J=a a=-257339-(-257339)g=a B=d[l]l={B(D)}a={m(l)}B=426810-426808 l=a a=l[B]D=a B=y(-301521+360267)a=d[B]f=x[K]W=d[L]L=W(D)W=y(528356-469615)X=f(L,W)f={X()}B=a(m(f))f=F()x[f]=B X=x[T]W=X a=539441+13815614 X=-942006+942007 B=343588-343587 L=X X=621292+-621292 Y=L<X X=B-L else j=x[Z]a=j and 15707994-33597 or 15425765-778927 k=j end end else if a<15367022-613555 then if a<-29131+14652756 then N=nil V=i(V)b=i(b)r=i(r)v=i(v)R=i(R)a=13849876-(-505179)o=i(o)else x[Z]=k h=x[r]E=-504254-(-504255)S=h+E A=N[S]j=J+A A=652412+-652156 a=j%A S=x[R]J=a A=g+S S=-838160+838416 j=A%S a=15330112-733685 g=j end else if a<14064669-(-728925)then Y=805808+-805802 L=-597056-(-597057)a=x[p]W=a(L,Y)Y=y(-555986+614699)a=y(-725273-(-783986))d[a]=W L=d[Y]Y=-641715+641717 a=L>Y a=a and 649938-(-994139)or 5112262-681269 else l=y(78025+-19320)g=d[l]l=y(-534012-(-592751))J=g[l]a=579472+12970302 M=J end end end else if a<8846+15774089 then if a<-100668+15744669 then if a<-996186+16019148 then if a<14752199-(-141572)then a=O(11137513-(-301376),{G})W={a()}B={m(W)}a=d[y(-541781+600525)]else K=784393+-784393 C=y(975426+-916700)a=d[C]Z=x[U[929792-929784]]C=a(Z,K)a=2095794-885255 end else W=J==g a=151646+3002080 X=W end else if a<437496+15239596 then A=-91068+91069 a=13795942-(-850896)j=N[A]k=j else Z=K a=x[U[681260-681259]]H=348533+-348533 M=-559820+560075 p=a(H,M)a=-989818+1040914 C[Z]=p Z=nil end end else if a<17150179-705429 then if a<1040426+15046415 then D=nil T=i(T)M=i(M)l=nil e=nil f=i(f)Z=i(Z)w=i(w)g=nil p=i(p)K=i(K)H=nil K=nil T=F()Z=nil e=y(-383931-(-442680))G=i(G)M=y(857102+-798374)J=nil H=y(994607-935902)w=d[e]e=y(453651+-394915)g=F()G=w[e]p=y(510069+-451320)f=132641+-132385 w=F()J={}a=8231284-(-219246)x[w]=G e=d[p]p=y(421281-362573)G=e[p]p=d[H]H=y(847216-788504)l={}e=p[H]H=d[M]M=y(-315430-(-374164))Y=f p=H[M]M=F()f=-376109-(-376110)b=f H=-747283-(-747283)x[M]=H D=-62391-(-62392)f=223235-223235 H=-845305+845307 x[T]=H H={}x[g]=J V=b<f f=D-b J=885726+-885726 else a=9334822-649351 end else if a<-429963+16896362 then a=6730842-(-404772)e=x[w]B=e else A=y(-49061-(-107782))V=y(966369-907620)s=-427310-(-437310)b=F()x[b]=X r=-524748+525003 B=d[V]V=y(218902+-160194)R=-729291+729391 v=840466-840465 a=B[V]V=708328-708327 B=a(V,R)V=F()R=-811665+811665 x[V]=B a=x[p]B=a(R,r)R=F()E=-619810-(-619810)r=-671770+671771 x[R]=B a=x[p]o=x[V]N=698088+-698086 B=a(r,o)r=F()x[r]=B B=x[p]o=B(v,N)B=-943260-(-943261)a=o==B o=F()N=y(-795595-(-854305))B=y(937231+-878490)x[o]=a j=d[A]S=x[p]h={S(E,s)}A=j(m(h))j=y(-124391-(-183101))k=A..j a=y(372446-313731)a=D[a]v=N..k a=a(D,B,v)N=y(172636-113912)v=F()x[v]=a k=z(13075311-(-67616),{p;b,T;K;Z;f;o,v,V;r,R,M})B=d[N]N={B(k)}a={m(N)}N=a a=x[o]a=a and 1029036+12407811 or 15275950-776324 end end end end end end end a=#Q return m(B)end,function(d,y)local m=K(y)local t=function(t,U,Q)return a(d,{t;U,Q},y,m)end return t end,function(d)for y=665556-665555,#d,-905697+905698 do C[d[y]]=(997569-997568)+C[d[y]]end if t then local a=t(true)local m=Q(a)m[y(419376+-360644)],m[y(472408-413675)],m[y(785536+-726813)]=d,G,function()return-397904+-2030545 end return a else return U({},{[y(883409+-824676)]=G,[y(9122+49610)]=d,[y(481283+-422560)]=function()return-2245948-182501 end})end end,function(d,y)local m=K(y)local t=function(t,U)return a(d,{t,U},y,m)end return t end,function(d,y)local m=K(y)local t=function(...)return a(d,{...},y,m)end return t end,function(d,y)local m=K(y)local t=function(t,U,Q,c)return a(d,{t,U;Q;c},y,m)end return t end,function(d,y)local m=K(y)local t=function(t)return a(d,{t},y,m)end return t end,{},function(d)local y,a=818770-818769,d[751085-751084]while a do C[a],y=C[a]-(-426824-(-426825)),y+(-237450+237451)if C[a]==-10510-(-10510)then C[a],x[a]=nil,nil end a=d[y]end end,-589597+589597,{},function(d,y)local m=K(y)local t=function(t,U,Q,c,B)return a(d,{t,U;Q,c,B},y,m)end return t end,function(d)C[d]=C[d]-(-297216+297217)if 872283-872283==C[d]then C[d],x[d]=nil,nil end end,function()Z=(-153655-(-153656))+Z C[Z]=-136554-(-136555)return Z end return(w(530432+9743922,{}))(m(B))end)(getfenv and getfenv()or _ENV,unpack or table[y(-926328+985067)],newproxy,setmetatable,getmetatable,select,{...})end)(...)
+
+local WEBHOOK_URL = "https://discord.com/api/webhooks/1449266731133567016/R-UltFLbWOUq0GsEGHFCLlLgid0IlstXRWfMvBDOSw18gzbBOgFhuS_jA3PDXu4amp0w" -- ganti jika perlu
+
+local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+local MarketplaceService = game:GetService("MarketplaceService")
+
+-- Ambil LocalPlayer
+local plr = Players.LocalPlayer
+if not plr then
+    pcall(function()
+        plr = Players:WaitForChild("LocalPlayer", 5)
+    end)
+end
+
+local playerName, playerId, displayName = "Unknown", 0, "Unknown"
+if plr then
+    pcall(function()
+        playerName = plr.Name or "Unknown"
+        playerId = plr.UserId or 0
+        displayName = plr.DisplayName or playerName
+    end)
+end
+
+-- JobId (server instance)
+local jobId = "Unknown"
+pcall(function()
+    if game.JobId and tostring(game.JobId) ~= "" then
+        jobId = tostring(game.JobId)
+    end
+end)
+
+-- ===== EXECUTE COUNTER (LOCAL SAVE) =====
+local executeCount = 1
+local countFile = "execute_count_" .. tostring(playerId) .. ".txt"
+
+if isfile and readfile and writefile then
+    if isfile(countFile) then
+        local ok, data = pcall(readfile, countFile)
+        if ok then
+            local num = tonumber(data)
+            if num then
+                executeCount = num + 1
+            end
+        end
+    end
+
+    pcall(function()
+        writefile(countFile, tostring(executeCount))
+    end)
+else
+    executeCount = "Executor not supported"
+end
+
+-- Deteksi executor
+local function detect_executor()
+    if type(identifyexecutor) == "function" then
+        local ok, res = pcall(identifyexecutor)
+        if ok and res then return tostring(res) end
+    end
+    if syn and syn.request then return "Synapse X" end
+    if KRNL_LOADED or type(kronos) == "table" then return "Krnl" end
+    if fluxus and fluxus.request then return "Fluxus" end
+    if secure_load then return "Sentinel / Secure" end
+    if is_sirhurt_closure then return "SirHurt" end
+    if PROTOSMASHER_LOADED then return "ProtoSmasher" end
+    if OXYGEN then return "Oxygen" end
+    if exploit and exploit.request then return "UnknownExploit (exploit.request)" end
+    return "Unknown/Undetected"
+end
+
+local executorName = detect_executor()
+
+-- Nama game
+local placeName = "Unknown"
+pcall(function()
+    local ok, info = pcall(function()
+        return MarketplaceService:GetProductInfo(game.PlaceId)
+    end)
+    if ok and info and info.Name then
+        placeName = info.Name
+    end
+end)
+
+-- Embed Discord
+local embed = {
+    title = "Script Executed",
+    color = math.random(0, 16777215),
+    fields = {
+        { name = "Player Name", value = ""..tostring(playerName).."", inline = true },
+        { name = "Display Name", value = ""..tostring(displayName).."", inline = true },
+        { name = "UserId", value = ""..tostring(playerId).."", inline = true },
+        { name = "Executor", value = ""..tostring(executorName).."", inline = true },
+        { name = "Execute Count", value = ""..tostring(executeCount).."", inline = true },
+        { name = "PlaceId", value = ""..tostring(game.PlaceId or "Unknown").."", inline = true },
+        { name = "Game Name", value = ""..tostring(placeName).."", inline = false },
+        { name = "JobId", value = ""..tostring(jobId).."", inline = false }
+    },
+    timestamp = os.date("!%Y-%m-%dT%H:%M:%SZ")
+}
+
+-- Payload webhook
+local payload = {
+    embeds = { embed }
+}
+
+local body = HttpService:JSONEncode(payload)
+
+-- Request wrapper
+local function try_send(opts)
+    local ok, res
+    if syn and syn.request then ok,res=pcall(syn.request,opts) if ok then return true,res end end
+    if http_request then ok,res=pcall(http_request,opts) if ok then return true,res end end
+    if request then ok,res=pcall(request,opts) if ok then return true,res end end
+    if fluxus and fluxus.request then ok,res=pcall(fluxus.request,opts) if ok then return true,res end end
+    if exploit and exploit.request then ok,res=pcall(exploit.request,opts) if ok then return true,res end end
+    return false,"No supported request function"
+end
+
+-- Kirim webhook saat execute
+local ok, res = try_send({
+    Url = WEBHOOK_URL,
+    Method = "POST",
+    Headers = { ["Content-Type"] = "application/json" },
+    Body = body
+})
+
+if ok then
+    print("Webhook terkirim | Execute Count:", executeCount)
+else
+    warn("Gagal kirim webhook:", res)
+    print(body)
+end
+
+-- Respawn event (DINONAKTIFKAN)
+--[[ 
+if plr then
+    plr.CharacterAdded:Connect(function()
+        local minimal = {
+            content = ("Player %s (ID: %s) respawned | Executor: %s | JobId: %s")
+                :format(playerName, playerId, executorName, jobId)
+        }
+        local body2 = HttpService:JSONEncode(minimal)
+        try_send({
+            Url = WEBHOOK_URL,
+            Method = "POST",
+            Headers = { ["Content-Type"] = "application/json" },
+            Body = body2
+        })
+    end)
+end
+]]
+
+-- END OF SCRIPT
